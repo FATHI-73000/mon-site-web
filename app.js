@@ -15,7 +15,6 @@ function fetchArticles() {
  // return data;
 //}
 function createPostElement(post) {
-    function createPostElement(post) {
         const div = document.createElement("div");
         div.className = "post";
       
@@ -42,4 +41,3 @@ function createPostElement(post) {
     }
 
     
-}
