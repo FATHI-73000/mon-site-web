@@ -1,0 +1,18 @@
+h1{ background-color: aqua;
+color: black;
+font-size: large;
+text-align: center;
+
+}
+.post {
+    display: inline-block;
+    margin: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+  }
+  button {
+    display: block;
+    margin: 20px auto;
+  }
