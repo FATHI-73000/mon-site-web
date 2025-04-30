@@ -65,25 +65,19 @@ function createPostElement(post) {
       }
 
         }
-        document.getElementById("contactForm").addEventListener("submit", function(event) {
-          event.preventDefault(); // Empêche le rechargement
-        
-          const name = document.getElementById("name").value;
-          const email = document.getElementById("email").value;
-          const message = document.getElementById("message").value;
-        
-          // Simuler un envoi
-          console.log("Nom:", name);
-          console.log("Email:", email);
-          console.log("Message:", message);
-        
-          // Afficher message de confirmation
-          document.getElementById("confirmation").style.display = "block";
-        
-          // Réinitialiser le formulaire
-          this.reset();
-        });
-        
+        // Gérer la soumission du formulaire
+document.getElementById("postForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // Empêche le rechargement de la page
+
+  const imageUrl = document.getElementById("imageUrl").value;
+
+  if (imageUrl.trim() !== "") {
+    const newPost = { url: imageUrl };
+    const postEl = createPostElement(newPost);
+    document.getElementById("feed").appendChild(postEl);
+    document.getElementById("postForm").reset(); // Réinitialise le formulaire
+  }
+});
 
 
         

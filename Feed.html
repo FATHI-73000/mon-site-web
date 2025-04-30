@@ -7,14 +7,13 @@
     <title>Formulaire</title>
 </head>
 <body>
-    <h1>  Formulaire conatctez-nous:</h1>
-    <form id="contactForm">
-        <input type="text" id="name" placeholder="Votre nom" required>
-        <input type="email" id="email" placeholder="Votre email" required>
-        <textarea id="message" placeholder="Votre message" required></textarea>
-        <button type="submit">Envoyer</button>
-      </form>
-      <p id="confirmation" style="display:none; color: green;">Message envoyé !</p>
+    <div class="ajouterPost">
+        <h2>Ajouter un chat manuellement</h2>
+        <form id="postForm">
+          <input type="text" id="imageUrl" placeholder="Entrez l'URL de l'image 🐱" required>
+          <button type="submit">Ajouter</button>
+        </form>
+      </div>
     <script src="app.js"></script>
 
 

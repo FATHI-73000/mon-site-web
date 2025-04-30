@@ -86,50 +86,37 @@ border: solid  1px black;
 
 
   }
-  #contactForm {
+  .ajouterPost {
+    margin: 20px auto;
+    padding: 10px;
+    max-width: 400px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  #postForm {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    max-width: 400px;
-    margin: 30px auto;
-    padding: 20px;
-    border: 2px solid #eee;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    background-color: #fafafa;
-    transition: transform 0.3s ease;
+    gap: 10px;
   }
   
-  #contactForm:hover {
-    transform: scale(1.01);
-  }
-  
-  input, textarea {
-    padding: 12px;
-    font-size: 1em;
+  #imageUrl {
+    padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 6px;
-    transition: border-color 0.3s;
+    border-radius: 5px;
   }
   
-  input:focus, textarea:focus {
-    border-color: #28a745;
-    outline: none;
-  }
-  
-  button {
+  #postForm button {
     background-color: #28a745;
     color: white;
-    padding: 12px;
-    font-size: 1em;
     border: none;
-    border-radius: 6px;
+    padding: 10px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color red  0.3s ease, transform 0.1 ease yellow;
   }
   
-  button:hover {
+  #postForm button:hover {
     background-color: #218838;
-    transform: scale 2%;
   }
   
