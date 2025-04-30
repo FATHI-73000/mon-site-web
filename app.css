@@ -86,3 +86,50 @@ border: solid  1px black;
 
 
   }
+  #contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: #fafafa;
+    transition: transform 0.3s ease;
+  }
+  
+  #contactForm:hover {
+    transform: scale(1.01);
+  }
+  
+  input, textarea {
+    padding: 12px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: border-color 0.3s;
+  }
+  
+  input:focus, textarea:focus {
+    border-color: #28a745;
+    outline: none;
+  }
+  
+  button {
+    background-color: #28a745;
+    color: white;
+    padding: 12px;
+    font-size: 1em;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color red  0.3s ease, transform 0.1 ease yellow;
+  }
+  
+  button:hover {
+    background-color: #218838;
+    transform: scale 2%;
+  }
+  

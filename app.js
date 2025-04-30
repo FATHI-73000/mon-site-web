@@ -64,18 +64,26 @@ function createPostElement(post) {
 
       }
 
-
         }
-
-      
-      
-
-
-
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+          event.preventDefault(); // Empêche le rechargement
         
-      
-  
-
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const message = document.getElementById("message").value;
+        
+          // Simuler un envoi
+          console.log("Nom:", name);
+          console.log("Email:", email);
+          console.log("Message:", message);
+        
+          // Afficher message de confirmation
+          document.getElementById("confirmation").style.display = "block";
+        
+          // Réinitialiser le formulaire
+          this.reset();
+        });
+        
 
 
         
