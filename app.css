@@ -16,3 +16,54 @@ text-align: center;
     display: block;
     margin: 20px auto;
   }
+
+  .Menudropdown{
+   position: relative;
+   display: inline-block;
+
+
+  } 
+
+  .Menudropdown button{
+    background-color: blue;
+    color: beige;
+    padding: 5px  10px ;
+   font-size: 15px;
+    border-bottom: #f0f0f0;
+    cursor:pointer;
+    border-radius: 4px;
+
+
+  }
+
+  .contenuMenu{
+display:none;
+position: relative;
+background-color: aqua;
+min-width: 200px;
+box-shadow: 0 8px 16px  rgba(0, 0,0, 2);
+z-index: 100;
+border-radius: 4px;
+overflow: hidden;
+
+  }
+
+  .contenuMenu a {
+
+color: black;
+
+padding: 10px  200px;
+
+display:inline;
+
+text-decoration: none;
+
+
+  }
+  
+  .contenuMenu a:hover {
+
+background-color:brown;
+
+
+  }
