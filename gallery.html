@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galerie de Chats</title>
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body>
+  <div class="Mur1">
+    <h1>Galerie de Chats 😺</h1>
+
+    <!-- Choix de l'affichage + ajout image -->
+    <div class="controls">
+      <button onclick="setView('grid')">🟦 Mosaïque</button>
+      <button onclick="setView('column')">🟨 Colonne</button>
+      <input type="file" id="ajoutImage" accept="image/*" />
+    </div>
+
+    <!-- Galerie fixe + images ajoutées dynamiquement -->
+    <div id="gallery" class="gallery grid">
+      <img src="https://cdn2.thecatapi.com/images/MTY3ODIyMQ.jpg" alt="Chat 1" />
+      <img src="https://cdn2.thecatapi.com/images/rEcqVVVto.jpg" alt="Chat 2" />
+      <img src="https://cdn2.thecatapi.com/images/3qu.jpg" alt="Chat 3" />
+      <img src="https://cdn2.thecatapi.com/images/O3btzLlsO.png" alt="Chat 4" />
+      <img src="https://cdn2.thecatapi.com/images/5ia.jpg" alt="Chat 5" />
+      <img src="https://cdn2.thecatapi.com/images/7gf.jpg" alt="Chat 6" />
+    </div>
+
+    <!-- Formulaire pour ajouter une image par URL -->
+    <form id="postForm">
+      <input type="text" id="imageUrl" placeholder="Entrer l'URL d'une image de chat" required />
+      <button type="submit">Ajouter l’image</button>
+    </form>
+
+    <!-- Mur dynamique pour les images via API ou ajout manuel -->
+    <div id="feed" class="mur-dynamique"></div>
+
+    <!-- Carrousel publicitaire -->
+    <div class="publicite">
+      <h2>Publicité</h2>
+      <div class="carousel">
+        <img src="https://cdn2.thecatapi.com/images/rEcqVVVto.jpg" alt="Pub 1" class="pub-image active">
+        <img src="https://cdn2.thecatapi.com/images/O3btzLlsO.png" alt="Pub 2" class="pub-image">
+        <img src="https://cdn2.thecatapi.com/images/7gf.jpg" alt="Pub 3" class="pub-image">
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

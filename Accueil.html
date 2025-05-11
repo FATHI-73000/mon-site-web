@@ -1,46 +1,34 @@
-<!DOCTYPE html>
-<html lang="FR">
+  <!DOCTYPE html>
+  <html lang="fr">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="app.css">
-  <title> Mur de posts</title>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="app.css" />
+    <title>Mur de posts</title>
+  </head>
 
-<body>
-  <div class="Mur">
-  <h1> Mur de chats </h1>
-  <button onclick="loadFeed()">🔄 Acualiser</button>
-  </div>
-  <div id="feed"></div>
-  
-  <!-- <div id="feed">
-    <div class="post">
-      <img src="https://cdn2.thecatapi.com/images/cat1.jpg" alt="Image de chat">
+  <body>
+    <div class="Mur">
+      <h1>Mur de chats 🐱</h1>
+      <button onclick="loadFeed()">🔄 Actualiser</button>
     </div>
-    <div class="post">
-      <img src="https://cdn2.thecatapi.com/images/cat2.jpg" alt="Image de chat">
+
+    <!-- Zone où s'affichent les images chargées dynamiquement -->
+    <div id="feed"></div>
+
+    <!-- Menu déroulant -->
+    <div class="Menudropdown">
+      <button onclick="toggleMenu()">Menu ▼</button>
+      <div id="contenuMenu" class="contenuMenu">
+        <a href="Accueil.html">Accueil</a>
+        <a href="Feed.html">Feed</a>
+        <a href="gallery.html">Galerie</a>
+        <a href="jeux.html">Jeux</a>
+      </div>
     </div>
-  </div>   -->
 
-  <div class="Menudropdown">
-    <button onclick="toggleMenu()">Menu ▼</button>
-    <div id="contenuMenu" class="contenuMenu">
-      <a href="Accueil.html">Acceuil</a>
-      <a href="Feed.html">Feed</a>
-      <a href="*">Galeries</a>
-      <a href="*">Jeux</a>
+    <script src="app.js"></script>
+  </body>
 
-    </div>
-  </div>
-
-
-  <script src="app.js"></script>
-
-
-
-
-</body>
-
-</html>
+  </html>

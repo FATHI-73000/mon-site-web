@@ -1,1 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="app.css">
+    <title>Jeux</title>
+</head>
+<body>
+  <div class="Mur2">
+    <h1>Jeux 🕹️</h1>
+    
+    <!-- Menu déroulant de navigation -->
+    <div class="Menudropdown">
+        <button onclick="toggleMenu()">Menu ▼</button>
+        <div id="contenuMenu" class="contenuMenu">
+            <a href="Accueil.html">Accueil</a>
+            <a href="Feed.html">Feed</a>
+            <a href="gallery.html">Galerie</a>
+            <a href="jeux.html">Jeux</a>
+        </div>
+    </div>
 
+    <!-- Section de jeux -->
+    <div class="games">
+        <h2>Jeux réalisés</h2>
+
+        <!-- Jeu 1 : Exemple de jeu -->
+        <div class="game">
+            <h3>Jeu 1 : [Nom du jeu]</h3>
+            <iframe src="chemin/vers/ton_jeu1.html" title="Jeu 1"></iframe>
+            <p><a href="chemin/vers/ton_jeu1.html" target="_blank">Jouer à ce jeu</a></p>
+        </div>
+
+        <!-- Jeu 2 : Exemple de jeu -->
+        <div class="game">
+            <h3>Jeu 2 : [Nom du jeu]</h3>
+            <iframe src="chemin/vers/ton_jeu2.html" title="Jeu 2"></iframe>
+            <p><a href="chemin/vers/ton_jeu2.html" target="_blank">Jouer à ce jeu</a></p>
+        </div>
+
+        <!-- Ajouter plus de jeux selon besoin -->
+    </div>
+
+    <script src="app.js"></script>
+  </div>
+</body>
+</html>

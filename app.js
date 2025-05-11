@@ -1,86 +1,161 @@
 
-function fetchArticles() {    // récupérer des données depuis une API via la méthode fetch.
-    return fetch("https://api.thecatapi.com/v1/images/search?limit=10")
-      .then(response => response.json()) //  est une méthode qui **convertit la réponse JSON en objet JavaScript**.
-      .then(data => {
-        return data; // on retourne les données récupérées   //représente les vraies données retournées par l’API, une fois qu’elles ont été transformées depuis le format JSON.
-      })
-      .catch(error => {
-        console.error("Erreur :", error); // en cas d'erreur, on l'affiche
-      });
-  }
-//async function fetchArticles() {
- // const response = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=5");
- // const data = await response.json();
- // return data;
-//}
+function fetchArticles() {
+  return fetch("https://api.thecatapi.com/v1/images/search?limit=10")
+    .then(response => response.json())
+    .catch(error => {
+      console.error("Erreur :", error);
+    });
+}
+
+/* ----------------------------------------
+   Création dynamique des éléments de posts
+---------------------------------------- */
 function createPostElement(post) {
-        const div = document.createElement("div");
-        div.className = "post";   //Cette ligne assigne une classe CSS à l’élément HTML div
-      
-        const img = document.createElement("img"); // pour créer des éléments HTML 
-        img.src = post.url;
-        img.alt = "Image de chat"; //alt signifie "texte alternatif".
+  const div = document.createElement("div");
+  div.className = "post";
 
-        img.style.width = "300px";
-      
-        div.appendChild(img); // Elle ajoute l’élément img (une image) dans l’élément div (le conteneur ou "post").
-        return div;
-      }
-      
-      function loadFeed() {   //  C’est la fonction qui remplit dynamiquement la page avec les images.
-        const feed = document.getElementById("feed"); // C’est une méthode qui permet de récupérer un élément HTML à partir de son attribut id.
-        feed.innerHTML = ""; // On vide le mur
-      
-        fetchArticles().then(posts => { //Cette fonction récupère les données depuis une API (par exemple, les images de chats).
-          posts.forEach(post => {       //.forEach() est une méthode de tableau qui permet d'itérer sur chaque élément du tableau.
+  const img = document.createElement("img");
+  img.src = post.url;
+  img.alt = "Image de chat";
+  img.style.width = "300px";
 
-            const postEl = createPostElement(post); // postEl est l'élément HTML créé par la fonction createPostElement.
-            feed.appendChild(postEl); // Cela permet de modifier et mettre à jour le contenu de la page en temps réel sans la recharger.
-          });
-        });
+  div.appendChild(img);
+  return div;
+}
 
-      }
+/* ----------------------------------------
+   Chargement et affichage du fil d’images
+---------------------------------------- */
+function loadFeed() {
+  const feed = document.getElementById("feed");
+  if (!feed) return;
 
-        function toggleMenu(){
-         const menu= document.getElementById("contenuMenu");
-         menu.style.display = menu.style.display === "block" ? "none" : "block" ; 
+  feed.innerHTML = "";
+
+  fetchArticles().then(posts => {
+    posts.forEach(post => {
+      const postEl = createPostElement(post);
+      feed.appendChild(postEl);
+    });
+  });
+}
+
+/* ----------------------------------------
+   Menu déroulant : ouvrir / fermer
+---------------------------------------- */
+function toggleMenu() {
+  const menu = document.getElementById("contenuMenu");
+  if (menu) {
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+  }
+}
+
+// Fermer le menu si clic en dehors d’un bouton
+window.onclick = function (event) {
+  if (!event.target.matches("button")) {
+    const dropdowns = document.getElementsByClassName("contenuMenu");
+    for (let i = 0; i < dropdowns.length; i++) {
+      dropdowns[i].style.display = "none";
+    }
+  }
+};
+
+/* ----------------------------------------
+   Gestion du formulaire d’ajout d’image par URL
+---------------------------------------- */
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("postForm");
+  const input = document.getElementById("imageUrl");
+  const feed = document.getElementById("feed");
+
+  if (form && input) {
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const imageUrl = input.value.trim();
+      if (imageUrl !== "") {
+        const newPost = { url: imageUrl };
+        const postEl = createPostElement(newPost);
+
+        if (feed) {
+          feed.appendChild(postEl);
+        } else {
+          // Si #feed n'existe pas (ex: page formulaire), ajouter après le formulaire
+          form.parentNode.appendChild(postEl);
         }
-        
-        window.onclick =function(event){
-        // Si l'élément cliqué n'est pas un bouton
-       if (!event.target.matches("button")){  // matches() est une méthode qui vérifie si un élément HTML correspond à un sélecteur CSS.
-        // On récupère tous les éléments avec la classe "contenuMenu"
 
-      const Menudropdown = document.getElementsByClassName("contenuMenu") ;
-
-       // On boucle sur chaque menu déroulant trouvé
-       for( let i = 0; i< Menudropdown.length; i++){
-        //  On cache le menu (en mettant display: none)
-
-        Menudropdown [i].style.display ="none" ;
-
-       }
-
+        form.reset();
       }
-
-        }
-        // Gérer la soumission du formulaire
-document.getElementById("postForm").addEventListener("submit", function(event) {
-  event.preventDefault(); // Empêche le rechargement de la page
-
-  const imageUrl = document.getElementById("imageUrl").value;
-
-  if (imageUrl.trim() !== "") {
-    const newPost = { url: imageUrl };
-    const postEl = createPostElement(newPost);
-    document.getElementById("feed").appendChild(postEl);
-    document.getElementById("postForm").reset(); // Réinitialise le formulaire
+    });
   }
 });
 
+/* ----------------------------------------
+   Vue galerie : changement de disposition
+---------------------------------------- */
+function setView(mode) {
+  const gallery = document.getElementById("gallery");
+  if (gallery) {
+    gallery.className = "gallery " + mode;
+  }
+}
 
-        
-    
+/* ----------------------------------------
+   Ajout d’image via l’explorateur de fichiers
+---------------------------------------- */
+const ajoutImage = document.getElementById("ajoutImage");
+const galerie = document.getElementById("gallery");
 
-    
+if (ajoutImage && galerie) {
+  ajoutImage.addEventListener("change", function (event) {
+    const fichier = event.target.files[0];
+    if (fichier && fichier.type.startsWith("image/")) {
+      const lecteur = new FileReader();
+      lecteur.onload = function (e) {
+        const container = document.createElement("div");
+        container.classList.add("image-container");
+
+        const img = document.createElement("img");
+        img.src = e.target.result;
+        img.alt = "Image ajoutée";
+
+        const btn = document.createElement("button");
+        btn.textContent = "✖";
+        btn.classList.add("delete-btn");
+        btn.onclick = () => {
+          if (confirm("Voulez-vous vraiment supprimer cette image ?")) {
+            container.remove();
+          }
+        };
+
+        container.appendChild(img);
+        container.appendChild(btn);
+        galerie.appendChild(container);
+      };
+      lecteur.readAsDataURL(fichier);
+    }
+  });
+}
+
+/* ----------------------------------------
+   Carrousel publicitaire d’images (défilement auto)
+---------------------------------------- */
+const pubImages = document.querySelectorAll(".pub-image");
+let indexPub = 0;
+
+function defilePub() {
+  if (pubImages.length === 0) return;
+
+  pubImages.forEach(img => img.classList.remove("active"));
+  indexPub = (indexPub + 1) % pubImages.length;
+  pubImages[indexPub].classList.add("active");
+}
+
+setInterval(defilePub, 3000);
+
+/* ----------------------------------------
+   Initialisation au chargement
+---------------------------------------- */
+window.onload = () => {
+  loadFeed(); // Ne s’exécute que si #feed est présent
+};
