@@ -1,3 +1,7 @@
 .password-prod
 
 
+.password-prod
+.password-prod` **n'est plus présent en ligne
+.password-prod` est **toujours présent en local
+.gitignore` contient bien `.password-prod
